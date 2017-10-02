@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         formulaPicker.dataSource = self
         formulaPicker.delegate = self
+        conversionStrings = formulasArray[formulaPicker.selectedRow(inComponent: 0)]
     }
     
     func calculateConversion() {
@@ -39,6 +40,7 @@ class ViewController: UIViewController {
             print("show alert here to say the value entered was not a number")
             return
         }
+        
         var outputValue = 0.0
         switch conversionStrings {
         case "miles to kilometers":
@@ -56,19 +58,23 @@ class ViewController: UIViewController {
         default:
             print("show alert - for some reason we didn't have a ConverstionStrings")
         }
-        resultsLabel.text = "\(inputValue) \(fromUnits) = \(outputValue) \(toUnits)"
+        
+        
+        let formatString = (decimalSegment.selectedSegmentIndex < decimalSegment.numberOfSegments - 1 ? "%.\(decimalSegment.selectedSegmentIndex+1)f" : "%f")
+        let outputString = String(format: formatString, outputValue)
+        resultsLabel.text = "\(inputValue) \(fromUnits) = \(outputString) \(toUnits)"
     }
 
     
-    @IBAction func convertButtonPressed(_ sender: Any) {
+    @IBAction func convertButtonPressed(_ sender: UIButton) {
+        calculateConversion()
     }
+    
 
     @IBAction func decimalSelected(_ sender: UISegmentedControl) {
-        
+        calculateConversion()
     }
 }
-
-
 
 extension ViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
