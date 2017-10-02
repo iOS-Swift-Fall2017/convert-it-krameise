@@ -28,6 +28,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <connections>
+                                    <action selector="userInputChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="MWi-IB-xug"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YEq-Tw-Mb7">
                                 <rect key="frame" x="256" y="40" width="103" height="24"/>
@@ -92,6 +95,18 @@
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bzh-2g-YkH">
+                                <rect key="frame" x="23" y="37" width="32" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="+"/>
+                                    <segment title="-"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="signSegmentSelected:" destination="BYZ-38-t0r" eventType="valueChanged" id="oQv-lV-0q8"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -101,6 +116,7 @@
                         <outlet property="formulaPicker" destination="bqG-ey-L8P" id="tMT-6Q-ZWl"/>
                         <outlet property="fromUnitsLabel" destination="YEq-Tw-Mb7" id="3Xd-LB-VIb"/>
                         <outlet property="resultsLabel" destination="Kcz-xR-FGg" id="joc-Gq-cA7"/>
+                        <outlet property="signSegment" destination="Bzh-2g-YkH" id="zS9-r3-UVE"/>
                         <outlet property="userInput" destination="pYK-MT-5Tg" id="7h6-Bu-94L"/>
                     </connections>
                 </viewController>
